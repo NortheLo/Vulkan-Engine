@@ -11,6 +11,7 @@
 #include <vector>
 
 namespace lve {
+
 class PointLightSystem {
  public:
   PointLightSystem(LveDevice &device, VkRenderPass renderPass, VkDescriptorSetLayout globalSetLayout);
@@ -19,6 +20,7 @@ class PointLightSystem {
   PointLightSystem(const PointLightSystem &) = delete;
   PointLightSystem &operator=(const PointLightSystem &) = delete;
 
+  void update(FrameInfo &frameInfo, GlobalUbo &ubo);
   void render(FrameInfo &frameInfo);
 
  private:

@@ -18,7 +18,8 @@ struct SimplePushConstantData {
   glm::mat4 normalMatrix{1.f};
 };
 
-SimpleRenderSystem::SimpleRenderSystem(LveDevice& device, VkRenderPass renderPass, VkDescriptorSetLayout globalSetLayout)
+SimpleRenderSystem::SimpleRenderSystem(
+    LveDevice& device, VkRenderPass renderPass, VkDescriptorSetLayout globalSetLayout)
     : lveDevice{device} {
   createPipelineLayout(globalSetLayout);
   createPipeline(renderPass);
@@ -34,7 +35,7 @@ void SimpleRenderSystem::createPipelineLayout(VkDescriptorSetLayout globalSetLay
   pushConstantRange.offset = 0;
   pushConstantRange.size = sizeof(SimplePushConstantData);
 
-  std::vector<VkDescriptorSetLayout> descriptorSetLayouts{globalSetLayout};  
+  std::vector<VkDescriptorSetLayout> descriptorSetLayouts{globalSetLayout};
 
   VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
   pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
@@ -62,21 +63,22 @@ void SimpleRenderSystem::createPipeline(VkRenderPass renderPass) {
       pipelineConfig);
 }
 
-void SimpleRenderSystem::renderGameObjects(FrameInfo &frameInfo) {
+void SimpleRenderSystem::renderGameObjects(FrameInfo& frameInfo) {
   lvePipeline->bind(frameInfo.commandBuffer);
 
-  vkCmdBindDescriptorSets(frameInfo.commandBuffer, 
-                          VK_PIPELINE_BIND_POINT_GRAPHICS, 
-                          pipelineLayout,
-                          0,
-                          1,
-                          &frameInfo.globalDescriptorSet,
-                          0,
-                          nullptr);
+  vkCmdBindDescriptorSets(
+      frameInfo.commandBuffer,
+      VK_PIPELINE_BIND_POINT_GRAPHICS,
+      pipelineLayout,
+      0,
+      1,
+      &frameInfo.globalDescriptorSet,
+      0,
+      nullptr);
 
   for (auto& kv : frameInfo.gameObjects) {
     auto& obj = kv.second;
-
+    if (obj.model == nullptr) continue;
     SimplePushConstantData push{};
     push.modelMatrix = obj.transform.mat4();
     push.normalMatrix = obj.transform.normalMatrix();
@@ -94,4 +96,3 @@ void SimpleRenderSystem::renderGameObjects(FrameInfo &frameInfo) {
 }
 
 }  // namespace lve
-
