@@ -1,3 +1,4 @@
+# Dont use this make file anymore; it is replaced by a cmake build
 CFLAGS = -std=c++17 -O2 -g
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXrandr -lXi #-lXxf86vm
 
