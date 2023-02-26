@@ -53,5 +53,6 @@
         "ctime": "cpp",
         "ratio": "cpp",
         "sstream": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": false
 }

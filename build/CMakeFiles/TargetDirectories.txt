@@ -1,3 +1,0 @@
-/home/louis/Dokumente/Programmieren/C++/Vulkan-YT-Tut/build/CMakeFiles/vulkan-engine.dir
-/home/louis/Dokumente/Programmieren/C++/Vulkan-YT-Tut/build/CMakeFiles/edit_cache.dir
-/home/louis/Dokumente/Programmieren/C++/Vulkan-YT-Tut/build/CMakeFiles/rebuild_cache.dir
