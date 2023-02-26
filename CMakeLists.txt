@@ -11,4 +11,4 @@ add_executable(vulkan-engine src/main.cpp src/first_app.cpp
              src/point_light_system.cpp src/simple_render_system.cpp)
 target_link_libraries(vulkan-engine -lglfw -lvulkan -ldl -lpthread -lX11 -lXrandr -lXi)
 add_compile_options(CMAKE_CXX_FLAGS -g -Wall -Wextra -Werror)
-set(CMAKE_CXX_FLAGS_RELEASE "-O2")  //-DCMAKE_BUILD_TYPE=Release
+set(CMAKE_CXX_FLAGS_RELEASE "-O2")  #-DCMAKE_BUILD_TYPE=Release
